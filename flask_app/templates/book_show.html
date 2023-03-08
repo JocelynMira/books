@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/2a075df1c0.js" crossorigin="anonymous"></script>
+    <title>Book Show</title>
+</head>
+<body>
+    <div class="d-flex justify-content-center">
+        <section class="col-6 bg-dark p-4 my-5 mx-5 text-light">
+            <div class="">
+                <h2 class="text-primary">Title:{{book.title}}</h2>
+                <p>Favorited by:</p>
+                {% for author in book.authors_who_favorited %}
+                    <p>{{author.name}}</p>
+                {% end %}
+            </div>
+            <form action = "/join_author" method="post">
+                <h2 class="text-info">Add Book's Favorite</h2>
+                <!--use hidden input to make connection to book id -->
+                <input type="hidden" name="book_id" value="{{book.id}}">
+                <div class="form-group">
+                    <label for="author_id">Book:</label>
+                    <select name="author_id" class="form-control">
+                        {% for author in unfavorited_authors %}
+                            <option value="{{author.id}}">{{author.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </form>
+            <div style="width:410px" align="end">
+                <a href="/" class="btn btn-secondary mt-4">Home</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

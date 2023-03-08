@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Books</title>
+</head>
+<body>
+    <div class="d-flex justify-content-center">
+        <form action="/new_book" method="post" class="col-4 bg-dark p-4 my-5 mx-5 text-light">
+            <h2 class="text-center text-primary">New Book</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" name="title" >
+                <label for="title">Title:</label>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="num_of_pages" >
+                <label for="num_of_pages">Number of pages:</label>
+            </div>
+            <input type="submit" value="Create" class="btn btn-primary btn-outline-dark mb-4">
+        </form>
+        <div class="col-4 bg-dark text-light text-center my-5 mx-5 p-4">
+            <h2 class="text-primary">All Books</h2>
+            {% for book in all_books %}
+                <p>
+                    <a href="/show_one_book/{{book.id}}" class="text-warning">{{book.title}}</a>
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+    <div style="width:1130px" align="end">
+        <a href="/" class="btn btn-warning text-center">Home</a>
+    </div>
+
+</body>
+</html>

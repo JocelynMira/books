@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/2a075df1c0.js" crossorigin="anonymous"></script>
+    <title>Author Show</title>
+</head>
+<body>
+    <div class="d-flex justify-content-center">
+        <section class="col-6 bg-dark p-4 my-5 mx-5 text-light">
+            <h2 class="text-primary">{{author.name}}'s favorites</h2>
+            <table class="table table-bordered text-light">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Number of Pages</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in author.book %}
+                    <tr>
+                        <td scope="row">{{ book.title }}</td>
+                        <td>{{ book.num_of_pages }}</td>
+                        <td>
+                            <a href="/delete_book/{{book.id}}" class="delete" title="Delete" data-toggle="tooltip"><i class="fa-solid fa-trash-can"></i></a>
+                        </td>
+                    </tr> 
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div style="width:410px" align="end">
+                <a href="/" class="btn btn-secondary mt-4">Home</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

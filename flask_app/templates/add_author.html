@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Authors</title>
+</head>
+<body>
+    <div class="d-flex justify-content-center">
+        <form action="/new_author" method="post" class="col-4 bg-dark p-4 my-5 mx-5 text-light">
+            <h2 class="text-center text-primary">New Author</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" >
+                <label for="name">Name:</label>
+            </div>
+            <input type="submit" value="Create" class="btn btn-primary btn-outline-dark mb-4">
+        </form>
+        <div class="col-4 bg-dark text-light text-center my-5 mx-5 p-4">
+            <h2 class="text-primary">All Authors</h2>
+            {% for author in all_authors %}
+                <p>
+                    <a href="/show_one_author/{{author.id}}" class="text-warning">{{author.name}}</a>
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+    <div style="width:1130px" align="end">
+        <a href='/books' class="btn btn-primary text-center">Add Book</a>
+    </div>
+
+</body>
+</html>
